@@ -1,0 +1,11 @@
+id 78920: push 4, boo 1, arrow 16
+id 78921: push 8, boo 3, arrow 13
+id 78922: push 60, boo 14, arrow 80
+id 78923: push 2, boo 1, arrow 4
+id 78924: push 0, boo 0, arrow 0
+id 78925: push 7, boo 0, arrow 16
+id 78926: push 8, boo 5, arrow 3
+id 78927: push 5, boo 0, arrow 6
+id 78928: push 5, boo 0, arrow 1
+id 78929: push 1, boo 2, arrow 8
+id 78930: push 10, boo 1, arrow 5

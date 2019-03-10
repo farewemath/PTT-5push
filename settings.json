@@ -1,0 +1,17 @@
+[
+	{
+		"ID"       : "Your ID",
+		"Password" : "Your Password",
+        "relogin"  : "50",
+        
+		"pushLB"   : "20",
+		"pushUB"   : "100",
+		"Board"    : "HatePolitics",
+		"startId"  : "79600",
+		"endId"    : "79900",
+        "keywords" : ["韩", "习", "習", "維尼", "台獨", "台独", "一統", "一统", "统一"],
+
+        "mode"     : "PUSH_SEARCH_BY_KEYWORD"
+	}
+
+]
