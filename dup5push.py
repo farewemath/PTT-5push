@@ -158,22 +158,11 @@ def pushString(push):
     content = push.getContent()
     count = 5
     num = 0
-
+    
     try:
         content.encode(encoding = 'cp950')
-    except UnicodeEncodeError:
-        content2 = ''
-        exceptflag = False
-        for c in content:
-            try:
-                c.encode(encoding = 'cp950')
-            except UnicodeEncodeError:
-                content2 += '■'
-                exceptflag = True
-            finally:
-                if not exceptflag:
-                    content2 += c
-        content = content2
+    except:
+        content = '■■ Error: 本行有無法轉換字符 ■■'
     
     temp += content
     count += len(push.getAuthor())    
@@ -196,7 +185,10 @@ def updateOutfile(lines, fopost):
         return
     fopost.write('\n')
     for line in lines:
-        fopost.write(line + '\n')
+        try:
+            fopost.write(line + '\n')
+        except:
+            print('Error in updating output: encode error?')
     return
     
 def getNameDict(lines):
@@ -303,6 +295,7 @@ def main():
     PushCountingSuccess = False
     PushKeywordSuccess = False
     reloginFlag = False
+    ctrlCFlag = False
 
     setting = readSettings()
 
@@ -354,6 +347,11 @@ def main():
                 PushKeywordSuccess = True
                 break
         
+
+        except KeyboardInterrupt:
+            relogin = -1
+            ctrlCFlag = True
+        
         #Relogin
         except:            
             if relogin >= 0:
@@ -368,6 +366,8 @@ def main():
         finally:
             #Logout
             PTTBot.logout()
+            if ctrlCFlag == True:
+                sys.exit()
             if reloginFlag == True:
                 reloginFlag = False
                 PTTBot = PTT.Library(kickOtherLogin=False)
